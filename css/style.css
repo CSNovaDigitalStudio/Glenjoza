@@ -363,6 +363,54 @@ font-weight: 500;
 
 }
 
+/* HAMBURGER DEFAULT HIDDEN */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--green);
+    transition: 0.3s ease;
+}
+
+/* MOBILE NAVIGATION */
+@media (max-width: 768px) {
+
+.navbar {
+    position: relative;
+}
+
+.hamburger {
+    display: flex;
+}
+
+.navbar nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    display: none;
+    padding: 20px 5%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.navbar nav a {
+    margin: 12px 0;
+}
+
+.navbar nav.active {
+    display: flex;
+}
+
+}
+
 
 
 
