@@ -1,32 +1,49 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-const cards = document.querySelectorAll(".service-card, .stat-card, .compliance-card");
+    /* ===============================
+       Scroll Reveal Animation
+    =============================== */
 
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
-if(entry.isIntersecting){
-entry.target.style.opacity = 1;
-entry.target.style.transform = "translateY(0)";
-}
-});
-},{ threshold: 0.2 });
+    const cards = document.querySelectorAll(
+        ".service-card, .stat-card, .compliance-card, .project-card"
+    );
 
-cards.forEach(card => {
-card.style.opacity = 0;
-card.style.transform = "translateY(50px)";
-card.style.transition = "all 0.6s ease";
-observer.observe(card);
-});
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = "translateY(0)";
+            }
+        });
+    }, { threshold: 0.2 });
 
-});
-
-// Mobile Hamburger Toggle
-const hamburger = document.getElementById("hamburger");
-const navMenu = document.getElementById("nav-menu");
-
-if (hamburger) {
-    hamburger.addEventListener("click", function () {
-        navMenu.classList.toggle("active");
+    cards.forEach(card => {
+        card.style.opacity = 0;
+        card.style.transform = "translateY(50px)";
+        card.style.transition = "all 0.6s ease";
+        observer.observe(card);
     });
-}
 
+
+    /* ===============================
+       Mobile Hamburger Toggle
+    =============================== */
+
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("nav-menu");
+
+    if (hamburger && navMenu) {
+
+        hamburger.addEventListener("click", function () {
+            navMenu.classList.toggle("active");
+        });
+
+        // Close menu when a link is clicked (professional touch)
+        navMenu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", function () {
+                navMenu.classList.remove("active");
+            });
+        });
+    }
+
+});
