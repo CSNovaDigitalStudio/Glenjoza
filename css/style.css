@@ -45,15 +45,20 @@ color: var(--gold);
 }
 
 .hero {
-height:90vh;
-background: linear-gradient(rgba(14,77,54,0.85), rgba(14,77,54,0.85)),
-url('../images/hero.jpg') center/cover no-repeat;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-color: var(--white);
-padding:0 20px;
+    height: 95vh;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    background:
+        linear-gradient(
+            to right,
+            rgba(14,77,54,0.9) 0%,
+            rgba(14,77,54,0.85) 35%,
+            rgba(14,77,54,0.6) 55%,
+            rgba(14,77,54,0.0) 75%
+        ),
+        url('../images/hero1.jpg') right center/cover no-repeat;
+    color: white;
 }
 
 .hero h1 {
@@ -301,12 +306,12 @@ font-weight: 500;
 }
 
 .logo img {
-    height: 65px;
+    height: 45px;
 }
 
 @media (min-width: 992px) {
     .logo img {
-        height: 90px;
+        height: 60px;
     }
 }
 
@@ -409,6 +414,55 @@ font-weight: 500;
     display: flex;
 }
 
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.gold-text {
+    color: var(--gold);
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-outline {
+    padding: 14px 30px;
+    border-radius: 30px;
+    border: 2px solid white;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: var(--green);
+}
+
+.service-card ul {
+margin-top: 15px;
+padding-left: 20px;
+}
+
+.service-card li {
+margin-bottom: 8px;
+color: var(--green);
+font-weight: 500;
 }
 
 
