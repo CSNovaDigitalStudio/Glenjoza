@@ -422,7 +422,7 @@ font-weight: 500;
 }
 
 .logo img {
-    max-height: 180px;  /* Much cleaner on phone */
+    max-height: 220px;  /* Much cleaner on phone */
 }
 
 .hero {
