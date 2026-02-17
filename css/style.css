@@ -64,7 +64,7 @@ color: var(--gold);
     padding: 0 8%;
     opacity: 0;
     transition: opacity 1s ease;
-    transform: scale(1.08);
+    transform: scale(1.02);
 }
 
 .slide.active {
@@ -102,7 +102,7 @@ color: var(--gold);
     background-position: center;
     background-repeat: no-repeat;
     z-index: 0;
-    transform: scale(1.1);
+    transform: scale(1.03);
     transition: transform 6s ease;
 }
 
@@ -422,7 +422,7 @@ font-weight: 500;
 }
 
 .logo img {
-    max-height: 120px;  /* Much cleaner on phone */
+    max-height: 180px;  /* Much cleaner on phone */
 }
 
 .hero {
