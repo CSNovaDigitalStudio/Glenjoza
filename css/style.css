@@ -418,11 +418,11 @@ font-weight: 500;
 
 @media (max-width: 768px) {
 .logo {
-    top: -15px;   /* Less aggressive */
+    top: -45px;   /* Less aggressive */
 }
 
 .logo img {
-    max-height: 220px;  /* Much cleaner on phone */
+    max-height: 190px;  /* Much cleaner on phone */
 }
 
 .hero {
