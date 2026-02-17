@@ -442,6 +442,20 @@ font-weight: 500;
 
 @media (max-width: 768px) {
 
+.hero-slider {
+    height: 75vh;   /* Reduce height on mobile */
+}
+
+.slide {
+    transform: none;   /* Remove zoom */
+}
+
+.slide::before {
+    transform: none;   /* Remove parallax zoom */
+    background-size: contain;  /* Show more of image */
+    background-position: center top;
+}
+
 .stats {
     flex-direction: column;
     gap: 20px;
