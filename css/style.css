@@ -418,7 +418,7 @@ font-weight: 500;
 
 @media (max-width: 768px) {
 .logo {
-    top: -45px;   /* Less aggressive */
+    top: -30px;   /* Less aggressive */
 }
 
 .logo img {
