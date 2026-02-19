@@ -145,3 +145,26 @@ function showSlide(index) {
     updateDots(index);
     currentSlide = index;
 }
+
+function sendToWhatsApp() {
+
+    const name = document.querySelector(".contact-form input[type='text']").value;
+    const email = document.querySelector(".contact-form input[type='email']").value;
+    const message = document.querySelector(".contact-form textarea").value;
+
+    const phoneNumber = "27694853579"; // Without + sign
+
+    const text = `Hello Glenjoza Projects,
+
+Name: ${name}
+Email: ${email}
+
+Message:
+${message}`;
+
+    const encodedText = encodeURIComponent(text);
+
+    const url = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+
+    window.open(url, "_blank");
+}
