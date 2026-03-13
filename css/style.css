@@ -712,6 +712,31 @@ object-fit:cover;
 border-radius:12px;
 }
 
+.team-photo{
+    width:100%;
+    height:auto;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+@media (max-width:768px){
+
+.team-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+}
+
+.team-card{
+    padding:20px;
+}
+
+.team-photo{
+    max-height:350px;
+    object-fit:contain;
+}
+
+}
+
 
 
 
