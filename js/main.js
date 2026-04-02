@@ -168,3 +168,45 @@ ${message}`;
 
     window.open(url, "_blank");
 }
+
+/* ===============================
+   REAL WELDING SPARK ENGINE
+=============================== */
+
+const weldContainer = document.querySelector(".weld-sparks");
+
+function createSpark() {
+    if (!weldContainer) return;
+
+    const spark = document.createElement("div");
+    spark.classList.add("spark");
+
+    // start near weld line
+    spark.style.left = Math.random() * window.innerWidth + "px";
+    spark.style.top = "0px";
+
+    // random direction (like real welding scatter)
+    const x = (Math.random() * 120) - 20;   // mostly right
+    const y = (Math.random() * -60);        // upward spray
+
+    spark.style.setProperty("--x", x + "px");
+    spark.style.setProperty("--y", y + "px");
+
+    // random duration
+    const duration = Math.random() * 0.6 + 0.4;
+    spark.style.animationDuration = duration + "s";
+
+    weldContainer.appendChild(spark);
+
+    setTimeout(() => {
+        spark.remove();
+    }, duration * 1000);
+}
+
+// continuous sparks (random timing)
+if (window.innerWidth > 768) {
+    setInterval(() => {
+        createSpark();
+        if (Math.random() > 0.6) createSpark();
+    }, 80);
+}

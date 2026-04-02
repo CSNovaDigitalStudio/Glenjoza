@@ -1,6 +1,8 @@
 :root {
 --green: #212632;
---gold: #B89B3C;
+--weld-core: #ffffff;
+--weld-hot: #ffae00;
+--weld-spark: #ff5a00;
 --white: #ffffff;
 --dark: #1a1a1a;
 }
@@ -17,13 +19,37 @@ background: var(--white);
 color: var(--dark);
 }
 
+/* ===========================
+   NAVBAR (NAVY + WHITE TEXT)
+=========================== */
+
 .navbar {
 display:flex;
-justify-content:flex-end; /* Push nav right */
+justify-content:flex-end;
 align-items:center;
 padding:40px 8%;
-background: var(--white);
-box-shadow:0 4px 20px rgba(0,0,0,0.05);
+background: #0d1b2a; /* NAVY */
+box-shadow:0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* FORCE WHITE TEXT */
+.navbar nav a {
+margin-left:25px;
+text-decoration:none;
+color: #ffffff !important;  /* FORCE IT */
+font-weight:500;
+transition:0.3s;
+}
+
+/* HOVER */
+.navbar nav a:hover {
+color: var(--weld-hot) !important;
+text-shadow: 0 0 6px var(--weld-hot);
+}
+
+/* FIX HAMBURGER COLOR */
+.hamburger span {
+background: #ffffff;
 }
 
 .logo {
@@ -35,23 +61,123 @@ letter-spacing:2px;
 .navbar nav a {
 margin-left:25px;
 text-decoration:none;
-color: var(--dark);
 font-weight:500;
 transition:0.3s;
 }
 
 .navbar nav a:hover {
-color: var(--gold);
+color: var(--weld-hot);
+text-shadow: 0 0 6px var(--weld-hot);
 }
 /* ===========================
    PREMIUM HERO SLIDER (FIXED)
+=========================== */
+
+/* ===========================
+   REAL WELD HERO LINE
 =========================== */
 
 .hero-slider {
     position: relative;
     height: 95vh;
     overflow: hidden;
-    border-top: 4px solid var(--gold);
+}
+
+/* MAIN WELD LINE */
+.hero-slider::before {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--weld-spark),
+        var(--weld-core),
+        var(--weld-hot),
+        var(--weld-spark),
+        transparent
+    );
+
+    box-shadow:
+        0 0 6px var(--weld-core),
+        0 0 15px var(--weld-hot),
+        0 0 30px var(--weld-spark);
+
+    z-index: 5;
+}
+
+/* MOVING WELD ARC */
+.hero-slider::after {
+    content:"";
+    position:absolute;
+    top:0;
+    left:-80px;
+    width:80px;
+    height:4px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #fff,
+        #fff,
+        transparent
+    );
+
+    animation: weldMove 1.5s linear infinite;
+    z-index: 6;
+}
+
+/* SPARK PARTICLES (SEPARATE LAYER) */
+.hero-slider .weld-sparks {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+/* REAL PARTICLE SPARKS */
+.spark {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #ffae00;
+    border-radius: 50%;
+    pointer-events: none;
+
+    box-shadow:
+        0 0 4px #fff,
+        0 0 8px #ffae00,
+        0 0 12px #ff5a00;
+
+    animation: sparkMove linear forwards;
+}
+
+@keyframes sparkMove {
+    0% {
+        transform: translate(0,0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) scale(0.3);
+        opacity: 0;
+    }
+}
+
+@keyframes weldMove {
+    0% { left:-80px; }
+    100% { left:100%; }
+}
+
+@keyframes sparksFly {
+    0% { transform: translate(0,0); opacity:1; }
+    100% { transform: translate(80px,-25px); opacity:0; }
 }
 
 .slide {
@@ -90,6 +216,120 @@ color: var(--gold);
     color: white;
     max-width: 650px;
     z-index: 2;
+}
+
+/* ===========================
+   WELD LINE FOR ALL PAGES
+=========================== */
+
+.page-hero {
+    position: relative;
+    overflow: hidden;
+}
+
+/* SAME WELD LINE */
+.page-hero::before {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--weld-spark),
+        var(--weld-core),
+        var(--weld-hot),
+        var(--weld-spark),
+        transparent
+    );
+
+    box-shadow:
+        0 0 6px var(--weld-core),
+        0 0 15px var(--weld-hot),
+        0 0 30px var(--weld-spark);
+
+    z-index: 5;
+}
+
+/* MOVING ARC */
+.page-hero::after {
+    content:"";
+    position:absolute;
+    top:0;
+    left:-80px;
+    width:80px;
+    height:4px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #fff,
+        #fff,
+        transparent
+    );
+
+    animation: weldMove 1.5s linear infinite;
+    z-index: 6;
+}
+
+/* ===========================
+   WELD LINE FOR ALL PAGES
+=========================== */
+
+.page-hero {
+    position: relative;
+    overflow: hidden;
+}
+
+/* SAME WELD LINE */
+.page-hero::before {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--weld-spark),
+        var(--weld-core),
+        var(--weld-hot),
+        var(--weld-spark),
+        transparent
+    );
+
+    box-shadow:
+        0 0 6px var(--weld-core),
+        0 0 15px var(--weld-hot),
+        0 0 30px var(--weld-spark);
+
+    z-index: 5;
+}
+
+/* MOVING ARC */
+.page-hero::after {
+    content:"";
+    position:absolute;
+    top:0;
+    left:-80px;
+    width:80px;
+    height:4px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #fff,
+        #fff,
+        transparent
+    );
+
+    animation: weldMove 1.5s linear infinite;
+    z-index: 6;
 }
 
 /* Background layer */
@@ -165,14 +405,23 @@ color: var(--gold);
 }
 
 .btn-gold {
-background: var(--gold);
-color: var(--white);
+background: linear-gradient(90deg, #ff5a00, #ffae00);
+color:#111;
 padding:14px 30px;
 border:none;
 border-radius:30px;
 text-decoration:none;
 display:inline-block;
-transition:0.3s;
+
+box-shadow:
+0 0 10px var(--weld-hot),
+0 0 20px rgba(255,174,0,0.6);
+}
+
+.btn-gold:hover {
+box-shadow:
+0 0 20px #fff,
+0 0 40px var(--weld-spark);
 }
 
 .btn-gold:hover {
@@ -204,7 +453,8 @@ padding:30px;
 border-radius:15px;
 box-shadow:0 10px 40px rgba(0,0,0,0.08);
 text-align:center;
-border-top:5px solid var(--gold);
+border: none;
+position: relative;
 }
 
 .service-grid {
@@ -355,7 +605,8 @@ align-items: start;
 .about-highlight {
 background: #f4f4f4;
 padding: 30px;
-border-left: 5px solid var(--gold);
+border: none;
+position: relative;
 border-radius: 8px;
 box-shadow: 0 8px 25px rgba(0,0,0,0.05);
 }
@@ -418,11 +669,11 @@ font-weight: 500;
 
 @media (max-width: 768px) {
 .logo {
-    top: -30px;   /* Less aggressive */
+    top: -10px;   /* Less aggressive */
 }
 
 .logo img {
-    height: 180px;
+    height: 140px;
     max-height: none;  /* Much cleaner on phone */
     width: auto;
 }
@@ -506,7 +757,7 @@ font-weight: 500;
 .hamburger span {
     width: 25px;
     height: 3px;
-    background: var(--green);
+    background: #ffffff !important;
     transition: 0.3s ease;
 }
 
@@ -516,13 +767,6 @@ font-weight: 500;
     flex-direction: column;
     cursor: pointer;
     gap: 5px;
-}
-
-.hamburger span {
-    width: 25px;
-    height: 3px;
-    background: var(--green);
-    transition: 0.3s ease;
 }
 
 /* MOBILE NAVIGATION */
@@ -543,7 +787,7 @@ font-weight: 500;
         top: 100%;
         left: 0;
         width: 100%;
-        background: white;
+        background: #0d1b2a;
         flex-direction: column;
         display: none;
         padding: 20px 5%;
@@ -570,7 +814,11 @@ font-weight: 500;
 }
 
 .gold-text {
-    color: var(--gold);
+color:#fff;
+text-shadow:
+0 0 5px #fff,
+0 0 15px var(--weld-hot),
+0 0 30px var(--weld-spark);
 }
 
 .hero p {
@@ -632,8 +880,8 @@ font-weight: 500;
 }
 
 .dot.active {
-    background: var(--gold);
-    transform: scale(1.2);
+background: var(--weld-hot);
+box-shadow: 0 0 8px var(--weld-hot);
 }
 
 /* ===========================
@@ -735,6 +983,30 @@ border-radius:12px;
     object-fit:contain;
 }
 
+}
+
+/* WELD EDGE ON CARDS */
+.stat-card::before,
+.service-card::before,
+.compliance-card::before,
+.team-card::before {
+content:"";
+position:absolute;
+left:0;
+top:0;
+width:3px;
+height:100%;
+
+background: linear-gradient(
+to bottom,
+var(--weld-spark),
+var(--weld-core),
+var(--weld-hot)
+);
+
+box-shadow:
+0 0 6px var(--weld-core),
+0 0 15px var(--weld-hot);
 }
 
 
